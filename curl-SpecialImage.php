@@ -11,7 +11,7 @@ function curlGet($url)
     return $results;
 }
 
-function returnXPathObject($item) 
+function returnXPathObj($item) 
 {
     $xmlPageDom = new DomDocument();
     @$xmlPageDom->loadHTML($item);
@@ -19,9 +19,9 @@ function returnXPathObject($item)
     return $xmlPageXPath;
 }
 
-$packtPage = curlGet('https://www.balyan.ir/'); 
-$packtPageXpath = returnXPathObject($packtPage); 
-$coverImage = $packtPageXpath->query('//img[@class="attachment-full size-full"]/@src');
+$webPage = curlGet('https://www.balyan.ir/'); 
+$webPageXpath = returnXPathObj($webPage); 
+$coverImage = $webPageXpath->query('//img[@class="attachment-full size-full"]/@src');
 
 if ($coverImage->length > 0) 
 {
